@@ -1,0 +1,96 @@
+﻿<Page x:Class="RecruitmentAgency.Views.EditPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RecruitmentAgency.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450"
+      Loaded="Page_Loaded"
+      d:DesignWidth="800"
+      Title="EditPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.2*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0">
+            <StackPanel Orientation="Vertical"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Место работы:"
+                               Width="100"/>
+                    <TextBox Text="{Binding Work.Title}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Опыт работы:"
+                               Width="100"/>
+                    <TextBox Text="{Binding Work.WorkExperience}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Проффесия:"
+                               Width="100"/>
+                    <TextBox Text="{Binding Work.Profession}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Оплачиваемость:"
+                               Width="100"/>
+                    <TextBox Text="{Binding Work.Salary}"
+                             Width="200"/>
+                </StackPanel>
+               
+
+            </StackPanel>
+        </Grid>
+
+
+        <StackPanel Grid.Column="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Image x:Name="ProductImage"
+                   Height="200"
+                   Margin="0 0 0 10"
+                   Source="{Binding user.Image}"
+                   Width="200"/>
+            <Button x:Name="SaveImageBtn"
+                    Width="120"
+                    Height="35"
+                    Content="Добавить"
+                    Click="SaveImageBtn_Click"/>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1"
+              Grid.ColumnSpan="2">
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Orientation="Horizontal">
+                <Button x:Name="backBtn"
+                        Content="Назад"
+                        Width="120"
+                        Height="35"
+                        Margin="0,0,20,0" 
+                        Click="backBtn_Click"/>
+                <Button x:Name="addBtn"
+                        Width="120"
+                        Height="35"
+                        Click="addBtn_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
