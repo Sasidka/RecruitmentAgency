@@ -23,10 +23,12 @@ namespace RecruitmentAgency.Model
         public int Code { get; set; }
         public string Title { get; set; }
         public string image { get; set; }
-        public int WorkExperience { get; set; }
+        public Nullable<int> WorkExperienceID { get; set; }
         public string Profession { get; set; }
         public string Salary { get; set; }
+        public string Schedule { get; set; }
     
+        public virtual WorkExperience WorkExperience { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<WorkUser> WorkUser { get; set; }
     }

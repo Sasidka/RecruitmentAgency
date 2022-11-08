@@ -30,7 +30,7 @@ namespace RecruitmentAgency.Views
 
         private void SignUp_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new SignUpPage(new User()));
         }
 
         private void SignIn_Click(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace RecruitmentAgency.Views
 
             if (dataUser != null)
             {
-                NavigationService.Navigate(new MainViewPage(dataUser));
+                NavigationService.Navigate(new MenuPage(dataUser));
             }
         }
     }

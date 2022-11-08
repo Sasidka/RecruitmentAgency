@@ -28,7 +28,7 @@ namespace RecruitmentAgency.Model
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Work> Work { get; set; }
+        public virtual DbSet<WorkExperience> WorkExperience { get; set; }
         public virtual DbSet<WorkUser> WorkUser { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

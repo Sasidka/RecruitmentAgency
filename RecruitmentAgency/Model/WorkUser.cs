@@ -15,8 +15,9 @@ namespace RecruitmentAgency.Model
     public partial class WorkUser
     {
         public int ID { get; set; }
-        public int WorkCode { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> WorkCode { get; set; }
+        public Nullable<int> UserID { get; set; }
+        public Nullable<System.DateTime> TimeOfReceipt { get; set; }
     
         public virtual User User { get; set; }
         public virtual Work Work { get; set; }

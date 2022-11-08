@@ -7,16 +7,6 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="principal_id" Type="int" Nullable="false" />
-    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="version" Type="int" />
-    <Property Name="definition" Type="varbinary(max)" />
-  </EntityType>
   <EntityType Name="User">
     <Key>
       <PropertyRef Name="ID" />
@@ -24,8 +14,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Patronymic" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="Age" Type="date" Nullable="false" />
+    <Property Name="Age" Type="date" />
     <Property Name="Login" Type="nvarchar" MaxLength="50" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
     <Property Name="RoleID" Type="int" />
@@ -37,17 +26,26 @@
     <Property Name="Code" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="image" Type="nvarchar(max)" />
-    <Property Name="WorkExperience" Type="int" Nullable="false" />
+    <Property Name="WorkExperienceID" Type="int" />
     <Property Name="Profession" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Salary" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Schedule" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkExperience">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="WorkUser">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" Nullable="false" />
-    <Property Name="WorkCode" Type="int" Nullable="false" />
-    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="WorkCode" Type="int" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TimeOfReceipt" Type="date" />
   </EntityType>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
@@ -61,8 +59,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Work_WorkExperience1">
+    <End Role="WorkExperience" Type="Self.WorkExperience" Multiplicity="0..1" />
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkExperience">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="WorkExperienceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_WorkUser_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="WorkUser" Type="Self.WorkUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -74,7 +84,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_WorkUser_Work">
-    <End Role="Work" Type="Self.Work" Multiplicity="1" />
+    <End Role="Work" Type="Self.Work" Multiplicity="0..1" />
     <End Role="WorkUser" Type="Self.WorkUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Work">
@@ -87,13 +97,17 @@
   </Association>
   <EntityContainer Name="Хранилище KABaseModelContainer">
     <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Work" EntityType="Self.Work" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkExperience" EntityType="Self.WorkExperience" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="WorkUser" EntityType="Self.WorkUser" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Work_WorkExperience1" Association="Self.FK_Work_WorkExperience1">
+      <End Role="WorkExperience" EntitySet="WorkExperience" />
+      <End Role="Work" EntitySet="Work" />
     </AssociationSet>
     <AssociationSet Name="FK_WorkUser_User" Association="Self.FK_WorkUser_User">
       <End Role="User" EntitySet="User" />

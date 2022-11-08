@@ -24,7 +24,7 @@
                         Width="120"
                         Height="35"
                         Margin="10 10 0 0"
-                        Content="Выйти"
+                        Content="Назад"
                         Click="BackBtn_Click"/>
             </StackPanel>
             <StackPanel VerticalAlignment="Center"
@@ -56,7 +56,7 @@
                 <ComboBox x:Name="filtrCmb" 
                           DisplayMemberPath="Title"
                           Width="140" 
-                          Height="40"
+                          Height="20"
                           SelectionChanged="filtrCmb_SelectionChanged"/>
             </StackPanel>
         </Grid>
@@ -69,24 +69,28 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
+                                <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
                             <StackPanel Grid.Column="0">
-                                <Image Source="{Binding Image}"
+                                <Image Source="{Binding image}"
                                            Width="150"
                                            Height="150"/>
                             </StackPanel>
                             <StackPanel VerticalAlignment="Center"
                                         Orientation="Vertical"
-                                        Grid.Column="1">
+                                        Grid.Column="1"
+                                        Margin="10 0 0 0">
                                 <Label Content="{Binding Title}"
                                        ContentStringFormat="Место Работы: {0}"/>
-                                <Label Content="{Binding WorkExperience}"
-                                       ContentStringFormat="Опыт Работы: {0}"/>
                                 <Label Content="{Binding Profession}"
-                                       ContentStringFormat="Проффесия: {0}"/>
+                                       ContentStringFormat="Профессия: {0}"/>
                                 <Label Content="{Binding Salary}"
-                                       ContentStringFormat="Оплачиваемость: {0}"/>
+                                       ContentStringFormat="Зарплата: {0}"/>
+                                <Label Content="{Binding Schedule}"
+                                       ContentStringFormat="График работы: {0}"/>
+                                <Label Content="{Binding user.WorkExperience.Title}"
+                                       ContentStringFormat="Опыт работы: {0}"/>
                             </StackPanel>
                         </Grid>
                     </DataTemplate>
@@ -121,15 +125,7 @@
             </StackPanel>
 
 
-            <StackPanel HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom">
-                <Button x:Name="PersonalAreaBtn"
-                        Width="150"
-                        Height="35"
-                        Margin="0 0 10 10"
-                        Content="Пользователи"
-                        Click="PersonalAreaBtn_Click"/>
-            </StackPanel>
+            
         </Grid>
     </Grid>
 </Page>

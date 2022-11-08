@@ -8,6 +8,7 @@
       d:DesignHeight="450"
       Loaded="Page_Loaded"
       d:DesignWidth="800"
+      
       Title="EditPage">
 
     <Grid>
@@ -29,31 +30,40 @@
                             Margin="0,0,0,20">
                     <TextBlock Text="Место работы:"
                                Width="100"/>
-                    <TextBox Text="{Binding Work.Title}"
+                    <TextBox Text="{Binding user.Title}"
                              Width="200"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal"
-                            Margin="0,0,0,20">
-                    <TextBlock Text="Опыт работы:"
-                               Width="100"/>
-                    <TextBox Text="{Binding Work.WorkExperience}"
-                             Width="200"/>
-                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Проффесия:"
                                Width="100"/>
-                    <TextBox Text="{Binding Work.Profession}"
+                    <TextBox Text="{Binding user.Profession}"
                              Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Оплачиваемость:"
                                Width="100"/>
-                    <TextBox Text="{Binding Work.Salary}"
+                    <TextBox Text="{Binding user.Salary}"
                              Width="200"/>
                 </StackPanel>
-               
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="График:"
+                               Width="100"/>
+                    <TextBox Text="{Binding user.Schedule}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Стаж работы:"
+                               Width="100"/>
+                    <ComboBox x:Name="WorkExerienceCmb"
+                              Width="200"
+                              DisplayMemberPath="Title"/>
+                </StackPanel>
+
 
             </StackPanel>
         </Grid>

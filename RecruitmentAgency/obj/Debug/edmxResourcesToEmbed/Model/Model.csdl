@@ -15,13 +15,12 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="Age" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Age" Type="DateTime" Precision="0" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RoleID" Type="Int32" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
     <NavigationProperty Name="WorkUser" Relationship="Self.FK_WorkUser_User" FromRole="User" ToRole="WorkUser" />
-    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="Work">
     <Key>
@@ -30,18 +29,29 @@
     <Property Name="Code" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="WorkExperience" Type="Int32" Nullable="false" />
+    <Property Name="WorkExperienceID" Type="Int32" />
     <Property Name="Profession" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Salary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Schedule" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WorkExperience" Relationship="Self.FK_Work_WorkExperience1" FromRole="Work" ToRole="WorkExperience" />
     <NavigationProperty Name="WorkUser" Relationship="Self.FK_WorkUser_Work" FromRole="Work" ToRole="WorkUser" />
+  </EntityType>
+  <EntityType Name="WorkExperience">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Work" Relationship="Self.FK_Work_WorkExperience1" FromRole="WorkExperience" ToRole="Work" />
   </EntityType>
   <EntityType Name="WorkUser">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="WorkCode" Type="Int32" Nullable="false" />
-    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="WorkCode" Type="Int32" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TimeOfReceipt" Type="DateTime" Precision="0" />
     <NavigationProperty Name="User" Relationship="Self.FK_WorkUser_User" FromRole="WorkUser" ToRole="User" />
     <NavigationProperty Name="Work" Relationship="Self.FK_WorkUser_Work" FromRole="WorkUser" ToRole="Work" />
   </EntityType>
@@ -58,7 +68,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_WorkUser_User">
-    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
     <End Role="WorkUser" Type="Self.WorkUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
@@ -69,8 +79,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Work_WorkExperience1">
+    <End Role="WorkExperience" Type="Self.WorkExperience" Multiplicity="0..1" />
+    <End Role="Work" Type="Self.Work" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkExperience">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Work">
+        <PropertyRef Name="WorkExperienceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_WorkUser_Work">
-    <End Role="Work" Type="Self.Work" Multiplicity="1" />
+    <End Role="Work" Type="Self.Work" Multiplicity="0..1" />
     <End Role="WorkUser" Type="Self.WorkUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Work">
@@ -85,6 +107,7 @@
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="User" EntityType="Self.User" />
     <EntitySet Name="Work" EntityType="Self.Work" />
+    <EntitySet Name="WorkExperience" EntityType="Self.WorkExperience" />
     <EntitySet Name="WorkUser" EntityType="Self.WorkUser" />
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
@@ -94,20 +117,13 @@
       <End Role="User" EntitySet="User" />
       <End Role="WorkUser" EntitySet="WorkUser" />
     </AssociationSet>
+    <AssociationSet Name="FK_Work_WorkExperience1" Association="Self.FK_Work_WorkExperience1">
+      <End Role="WorkExperience" EntitySet="WorkExperience" />
+      <End Role="Work" EntitySet="Work" />
+    </AssociationSet>
     <AssociationSet Name="FK_WorkUser_Work" Association="Self.FK_WorkUser_Work">
       <End Role="Work" EntitySet="Work" />
       <End Role="WorkUser" EntitySet="WorkUser" />
     </AssociationSet>
-    <EntitySet Name="sysdiagrams" EntityType="KABaseModel.sysdiagrams" />
   </EntityContainer>
-  <EntityType Name="sysdiagrams">
-    <Key>
-      <PropertyRef Name="diagram_id" />
-    </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="version" Type="Int32" />
-    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-  </EntityType>
 </Schema>

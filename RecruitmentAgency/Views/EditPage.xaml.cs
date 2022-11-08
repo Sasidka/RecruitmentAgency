@@ -23,8 +23,9 @@ namespace RecruitmentAgency.Views
     /// </summary>
     public partial class EditPage : Page
     {
-        public static Work user { get; set; }
+
         public OpenFileDialog file = new OpenFileDialog();
+        public Work user { get; set; }
         public EditPage(Work cWork)
         {
             InitializeComponent();
@@ -44,7 +45,7 @@ namespace RecruitmentAgency.Views
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Что-то пошло не так!", "Упсм", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(ex.Message, ex.Source + " исключение",  MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -55,9 +56,9 @@ namespace RecruitmentAgency.Views
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (user.Code== 0)
+            if (user.Code == 0)
             {
-                user.image= file.FileName;
+                user.image = file.FileName;
                 AppData.db.Work.Add(user);
                 AppData.db.SaveChanges();
                 MessageBox.Show("Данные были успешно добавлены!");
@@ -74,14 +75,17 @@ namespace RecruitmentAgency.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            if (user.Code == 0)
-            {
-                addBtn.Content = "Добавить";
-            }
-            else
+            WorkExerienceCmb.ItemsSource = AppData.db.WorkExperience.ToList();
+            if (user.Code != 0)
             {
                 addBtn.Content = "Редактировать";
             }
+            else if (user.Code == 0)
+            {
+                addBtn.Content = "Добавить";
+            }
         }
+
+        
     }
 }

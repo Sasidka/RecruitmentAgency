@@ -27,3 +27,9 @@ C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\Main
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\RecruitmentAgency.csproj.CopyComplete
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\EditPage.g.cs
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\EditPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MenuPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MenuPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\UserListPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\UserListPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\SignUpPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\SignUpPage.baml
