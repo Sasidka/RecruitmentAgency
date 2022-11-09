@@ -7,6 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" 
       d:DesignWidth="800"
+      Background="#e5e6e8"
       Title="SignInPage">
 
     <Grid>
@@ -20,12 +21,12 @@
         <StackPanel HorizontalAlignment="Right"
                     VerticalAlignment="Center"
                     >
-        <StackPanel HorizontalAlignment="Center">
+        <!--<StackPanel HorizontalAlignment="Center">
             <Label Content="Кадровое агентство"
                    FontWeight="Black"
                    FontSize="22"
                    Margin="0 0 0 40"/>
-        </StackPanel>
+        </StackPanel>-->
             <StackPanel Orientation="Horizontal"
                         Margin="0 0 0 10">
                 <TextBlock Text="Логин"
@@ -48,7 +49,7 @@
                 <Button x:Name="SignUp"
                         Width="120"
                         Height="25"
-                        Content="Регистрация"
+                        Content="Отправить заявку"
                         Margin="0 0 19 0"
                         Click="SignUp_Click"/>
 
@@ -62,9 +63,10 @@
 
         <StackPanel Grid.Column="1"
                     HorizontalAlignment="Left"
-                    VerticalAlignment="Center">
-            <Image Source="../Photo/agencylogo.png"
-                   />
+                    VerticalAlignment="Center"
+                    Margin="10 0 0 0">
+            <Image Source="../Photo/logoKA.jpg"
+                   Width="250"/>
         </StackPanel>
     </Grid>
 </Page>

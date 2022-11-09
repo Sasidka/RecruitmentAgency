@@ -89,7 +89,7 @@
                                        ContentStringFormat="Зарплата: {0}"/>
                                 <Label Content="{Binding Schedule}"
                                        ContentStringFormat="График работы: {0}"/>
-                                <Label Content="{Binding user.WorkExperience.Title}"
+                                <Label Content="{Binding WorkExperience.Title}"
                                        ContentStringFormat="Опыт работы: {0}"/>
                             </StackPanel>
                         </Grid>
@@ -124,8 +124,6 @@
                         Click="deleteBtn_Click"/>
             </StackPanel>
 
-
-            
         </Grid>
     </Grid>
 </Page>

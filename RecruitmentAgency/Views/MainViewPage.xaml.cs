@@ -133,5 +133,7 @@ namespace RecruitmentAgency.Views
                 AdminPanel.Visibility = Visibility.Collapsed;
             }
         }
+
+        
     }
 }

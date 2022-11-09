@@ -1,4 +1,7 @@
-﻿using System;
+﻿using RecruitmentAgency.Classes;
+using RecruitmentAgency.Model;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,14 +23,31 @@ namespace RecruitmentAgency.Views
     /// </summary>
     public partial class UserListPage : Page
     {
-        public UserListPage()
+       
+        public static User user { get; set; }
+        public UserListPage(User getUser)
         {
             InitializeComponent();
+            user = getUser;
+            this.DataContext = this;
         }
 
         private void BackBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.GoBack(); 
+        }
+
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            UsersPanel.ItemsSource = AppData.db.User.ToList();
+        }
+
+        private void MoreBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (UsersPanel.SelectedItem != null)
+            {
+                NavigationService.Navigate(new MoreUserInfoPage(UsersPanel.SelectedItem as User));
+            }
         }
     }
 }

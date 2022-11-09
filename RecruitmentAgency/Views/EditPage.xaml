@@ -61,7 +61,8 @@
                                Width="100"/>
                     <ComboBox x:Name="WorkExerienceCmb"
                               Width="200"
-                              DisplayMemberPath="Title"/>
+                              DisplayMemberPath="Title"
+                              SelectedItem="{Binding user.WorkExperience}"/>
                 </StackPanel>
 
 
@@ -75,7 +76,7 @@
             <Image x:Name="ProductImage"
                    Height="200"
                    Margin="0 0 0 10"
-                   Source="{Binding user.Image}"
+                   Source="{Binding user.image}"
                    Width="200"/>
             <Button x:Name="SaveImageBtn"
                     Width="120"

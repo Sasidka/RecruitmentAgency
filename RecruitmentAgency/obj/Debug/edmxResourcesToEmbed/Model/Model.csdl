@@ -1,5 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="KABaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="EducationDocument">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameOfPlaceOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PlaceOfStudy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiplomaIssueDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Speciality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qualification" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_EducationDocument" FromRole="EducationDocument" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Passport">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Seria" Type="Int32" Nullable="false" />
+    <Property Name="Number" Type="Int32" Nullable="false" />
+    <Property Name="DepartmentCode" Type="Int32" Nullable="false" />
+    <Property Name="DateOfIssue" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="User" Relationship="Self.FK_User_Passport" FromRole="Passport" ToRole="User" />
+  </EntityType>
   <EntityType Name="Role">
     <Key>
       <PropertyRef Name="ID" />
@@ -15,10 +38,16 @@
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Age" Type="DateTime" Precision="0" />
     <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="RoleID" Type="Int32" />
+    <Property Name="PassportID" Type="Int32" />
+    <Property Name="EducationDocumentsID" Type="Int32" />
+    <Property Name="DesiredJob" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="EducationDocument" Relationship="Self.FK_User_EducationDocument" FromRole="User" ToRole="EducationDocument" />
+    <NavigationProperty Name="Passport" Relationship="Self.FK_User_Passport" FromRole="User" ToRole="Passport" />
     <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
     <NavigationProperty Name="WorkUser" Relationship="Self.FK_WorkUser_User" FromRole="User" ToRole="WorkUser" />
   </EntityType>
@@ -40,7 +69,7 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Work" Relationship="Self.FK_Work_WorkExperience1" FromRole="WorkExperience" ToRole="Work" />
   </EntityType>
@@ -48,13 +77,37 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="WorkCode" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="TimeOfReceipt" Type="DateTime" Precision="0" />
     <NavigationProperty Name="User" Relationship="Self.FK_WorkUser_User" FromRole="WorkUser" ToRole="User" />
     <NavigationProperty Name="Work" Relationship="Self.FK_WorkUser_Work" FromRole="WorkUser" ToRole="Work" />
   </EntityType>
+  <Association Name="FK_User_EducationDocument">
+    <End Role="EducationDocument" Type="Self.EducationDocument" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EducationDocument">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="EducationDocumentsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Passport">
+    <End Role="Passport" Type="Self.Passport" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Passport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PassportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_User_Role">
     <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="User" Type="Self.User" Multiplicity="*" />
@@ -104,11 +157,21 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="KABaseEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EducationDocument" EntityType="Self.EducationDocument" />
+    <EntitySet Name="Passport" EntityType="Self.Passport" />
     <EntitySet Name="Role" EntityType="Self.Role" />
     <EntitySet Name="User" EntityType="Self.User" />
     <EntitySet Name="Work" EntityType="Self.Work" />
     <EntitySet Name="WorkExperience" EntityType="Self.WorkExperience" />
     <EntitySet Name="WorkUser" EntityType="Self.WorkUser" />
+    <AssociationSet Name="FK_User_EducationDocument" Association="Self.FK_User_EducationDocument">
+      <End Role="EducationDocument" EntitySet="EducationDocument" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Passport" Association="Self.FK_User_Passport">
+      <End Role="Passport" EntitySet="Passport" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
     <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
       <End Role="Role" EntitySet="Role" />
       <End Role="User" EntitySet="User" />

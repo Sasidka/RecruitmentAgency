@@ -1,0 +1,167 @@
+﻿<Page x:Class="RecruitmentAgency.Views.MoreUserInfoPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:RecruitmentAgency.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MoreUserInfoPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel HorizontalAlignment="Left"
+                    >
+            <Button x:Name="BackBtn"
+                    Width="120"
+                    Height="35"
+                    Margin="10 10"
+                    Content="Назад"
+                    Click="BackBtn_Click"/>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical"
+                        Margin="0 10 0 0"
+                        VerticalAlignment="Top"
+                        HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Имя:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Name}"
+                             Width="200"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Фамилия:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Surname}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Отчество:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Patronymic}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Возраст:"
+                               Width="120"/>
+                    <DatePicker SelectedDate="{Binding user.Age}"
+                                Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Серия паспорта:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Passport.Seria}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Номер паспорта:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Passport.Number}"
+                             Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal"
+                            Margin="0,0,0,20">
+                    <TextBlock Text="Место выдачи:"
+                               Width="120"/>
+                    <TextBox Text="{Binding user.Passport.DepartmentCode}"
+                             Width="200"/>
+                </StackPanel>
+
+
+
+            </StackPanel>
+
+
+            <StackPanel Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+
+
+
+                    </Grid>
+                    <Grid Grid.Column="1">
+                        <StackPanel Orientation="Vertical">
+
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Дата Выдачи:"
+                                   Width="140"/>
+                                <DatePicker SelectedDate="{Binding user.Passport.DateOfIssue}"
+                                    Width="200"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Желаемая работа:"
+                                           Width="140"/>
+                                <TextBox Text="{Binding user.DesiredJob}"
+                                         Width="200"/>
+                            </StackPanel><StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Место учебы:"
+                                   Width="140"/>
+                                <TextBox Text="{Binding user.EducationDocument.PlaceOfStudy}"
+                                         Width="200"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Дата выдачи диплома:"
+                                           Width="140"/>
+                                <DatePicker SelectedDate="{Binding user.EducationDocument.DiplomaIssueDate}"
+                                    Width="200"/>
+                            </StackPanel><StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Место учебы:"
+                                   Width="140"/>
+                                
+                                <TextBox Text="{Binding user.EducationDocument.NameOfPlaceOfStudy}"
+                                         Width="200"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Специальность:"
+                                           Width="140"/>
+                                <TextBox Text="{Binding user.EducationDocument.Speciality}"
+                                         Width="200"/>
+                            </StackPanel><StackPanel Orientation="Horizontal"
+                                        Margin="0,0,0,20">
+                                <TextBlock Text="Квалификация:"
+                                           Width="140"/>
+                                <TextBox Text="{Binding user.EducationDocument.Qualification}"
+                                         Width="200"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+
+            </StackPanel>
+
+        </Grid>
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom">
+            <Button x:Name="SaveEditBtn"
+                    Width="120"
+                    Height="35"
+                    Margin="0 0 0 15"
+                    Content="Редактировать"
+                    Click="SaveEditBtn_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

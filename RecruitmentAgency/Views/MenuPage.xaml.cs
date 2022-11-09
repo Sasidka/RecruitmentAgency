@@ -32,7 +32,7 @@ namespace RecruitmentAgency.Views
 
         private void UserListBtn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new UserListPage());
+            NavigationService.Navigate(new UserListPage(user));
         }
 
         private void WorkListBtn_Click(object sender, RoutedEventArgs e)

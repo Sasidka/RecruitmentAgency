@@ -33,3 +33,11 @@ C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\User
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\UserListPage.baml
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\SignUpPage.g.cs
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\SignUpPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDesignColors.dll
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDesignColors.pdb
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MoreUserInfoPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MoreUserInfoPage.baml

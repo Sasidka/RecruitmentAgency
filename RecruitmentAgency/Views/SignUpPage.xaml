@@ -63,15 +63,14 @@
                              Width="200"
                              BorderThickness="0 0 0 2"/>
                 </StackPanel>
-                <!--<StackPanel Orientation="Horizontal"
+                <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
-                    <TextBlock Text="Возраст:"
+                    <TextBlock Text=" Отчество:"
                                Width="100"/>
-                    <TextBox Text="{Binding user.Age}"
+                    <TextBox Text="{Binding user.Patronymic}"
                              Width="200"
-                             x:Name="AgeTb"
                              BorderThickness="0 0 0 2"/>
-                </StackPanel>-->
+                </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Возраст:"

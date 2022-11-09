@@ -25,6 +25,8 @@ namespace RecruitmentAgency.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<EducationDocument> EducationDocument { get; set; }
+        public virtual DbSet<Passport> Passport { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Work> Work { get; set; }

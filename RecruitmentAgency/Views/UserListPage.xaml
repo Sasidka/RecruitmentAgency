@@ -5,13 +5,16 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:RecruitmentAgency.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="450" 
+      Loaded="Page_Loaded"
+      d:DesignWidth="800"
       Title="UserListPage">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.2*"/>
             <RowDefinition/>
+            <RowDefinition Height="0.2*"/>
         </Grid.RowDefinitions>
 
         <StackPanel HorizontalAlignment="Left">
@@ -26,23 +29,27 @@
 
         <StackPanel Grid.Row="1">
             <DataGrid x:Name="UsersPanel"
-                  AutoGenerateColumns="False">
+                      AutoGenerateColumns="False"
+                      IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn  Width="*" Header="Имя" Binding="{Binding Name}"/>
-                    <DataGridTextColumn  Width="*" Header="Фамилия" Binding="{Binding Pets.Title}"/>
-                    <DataGridTextColumn  Width="*" Header="Возраст" Binding="{Binding Name}"/>
-                    <DataGridTextColumn  Width="*" Header="Логин" Binding="{Binding Breed.Title}"/>
-                    <DataGridTextColumn  Width="*" Header="Пол" Binding="{Binding Gender.Title}"/>
-                    <DataGridTextColumn  Width="*" Header="Цена" Binding="{Binding Price}"/>
-                    <DataGridTemplateColumn Width="*" Header="Фото">
-                        <DataGridTemplateColumn.CellTemplate>
-                            <DataTemplate >
-                                <Image Source="{Binding Photo}"/>
-                            </DataTemplate>
-                        </DataGridTemplateColumn.CellTemplate>
-                    </DataGridTemplateColumn>
+                    <DataGridTextColumn  Width="*" Header="Фамилия" Binding="{Binding Surname}"/>
+                    <DataGridTextColumn  Width="*" Header="Отчество" Binding="{Binding Patronymic}"/>
+                    <DataGridTextColumn  Width="*" Header="Возраст" Binding="{Binding Age, StringFormat={}{0:dd.MM.yyyy}}"/>
+                    <DataGridTextColumn  Width="*" Header="Желаемая работа" Binding="{Binding DesiredJob}"/>
                 </DataGrid.Columns>
             </DataGrid>
+        </StackPanel>
+
+        <StackPanel x:Name="MorePanel"
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <Button x:Name="MoreBtn"
+                    Width="120"
+                    Height="30"
+                    Content="Подробнее"
+                    Click="MoreBtn_Click"/>
         </StackPanel>
     </Grid>
 </Page>
