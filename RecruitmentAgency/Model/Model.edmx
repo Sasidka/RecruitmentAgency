@@ -76,6 +76,7 @@
           <Property Name="WorkCode" Type="int" />
           <Property Name="UserID" Type="int" />
           <Property Name="TimeOfReceipt" Type="date" />
+          <Property Name="IsAccepted" Type="bit" />
         </EntityType>
         <Association Name="FK_User_EducationDocument">
           <End Role="EducationDocument" Type="Self.EducationDocument" Multiplicity="0..1" />
@@ -268,6 +269,7 @@
           <Property Name="WorkCode" Type="Int32" />
           <Property Name="UserID" Type="Int32" />
           <Property Name="TimeOfReceipt" Type="DateTime" Precision="0" />
+          <Property Name="IsAccepted" Type="Boolean" />
           <NavigationProperty Name="User" Relationship="Self.FK_WorkUser_User" FromRole="WorkUser" ToRole="User" />
           <NavigationProperty Name="Work" Relationship="Self.FK_WorkUser_Work" FromRole="WorkUser" ToRole="Work" />
         </EntityType>
@@ -458,6 +460,7 @@
                 <ScalarProperty Name="WorkCode" ColumnName="WorkCode" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="TimeOfReceipt" ColumnName="TimeOfReceipt" />
+                <ScalarProperty Name="IsAccepted" ColumnName="IsAccepted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

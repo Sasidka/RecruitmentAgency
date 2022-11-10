@@ -23,7 +23,7 @@ namespace RecruitmentAgency.Views
     public partial class MainViewPage : Page
     {
         public static Work work { get; set; }
-        public User user = new User();
+        public User user { get; set; }
         public MainViewPage(Work getWork, User getUser)
         {
             InitializeComponent();
@@ -108,7 +108,7 @@ namespace RecruitmentAgency.Views
                 MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-           
+          
         }
 
         private void clear_cmb_Click(object sender, RoutedEventArgs e)
@@ -126,14 +126,25 @@ namespace RecruitmentAgency.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-                listView.ItemsSource = AppData.db.Work.ToList();
+            listView.ItemsSource = AppData.db.Work.ToList();
             filtrCmb.ItemsSource = AppData.db.Work.ToList();
             if (user.RoleID == 2)
             {
                 AdminPanel.Visibility = Visibility.Collapsed;
             }
+            else if (user.RoleID == 1) 
+            {
+                SubUrApplicationBtn.Visibility = Visibility.Collapsed;
+            }
         }
 
-        
+        private void SubUrApplicationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (listView.SelectedItem != null)
+            {
+                //NavigationService.Navigate(new MoreUserInfoPage(listView.SelectedItem as Work));
+            }
+        }
+    
     }
 }

@@ -8,7 +8,7 @@
       d:DesignHeight="450" 
       Loaded="Page_Loaded"
       d:DesignWidth="800"
-      Title="UserListPage">
+      Title="Список кадров">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,18 +25,18 @@
                     Content="Назад"
                     Click="BackBtn_Click"/>
         </StackPanel>
-
+        
 
         <StackPanel Grid.Row="1">
             <DataGrid x:Name="UsersPanel"
                       AutoGenerateColumns="False"
                       IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn  Width="*" Header="Имя" Binding="{Binding Name}"/>
-                    <DataGridTextColumn  Width="*" Header="Фамилия" Binding="{Binding Surname}"/>
-                    <DataGridTextColumn  Width="*" Header="Отчество" Binding="{Binding Patronymic}"/>
-                    <DataGridTextColumn  Width="*" Header="Возраст" Binding="{Binding Age, StringFormat={}{0:dd.MM.yyyy}}"/>
-                    <DataGridTextColumn  Width="*" Header="Желаемая работа" Binding="{Binding DesiredJob}"/>
+                    <DataGridTextColumn  Width="*" Header="Имя" Binding="{Binding User.Name}"/>
+                    <DataGridTextColumn  Width="*" Header="Фамилия" Binding="{Binding User.Surname}"/>
+                    <DataGridTextColumn  Width="*" Header="Отчество" Binding="{Binding User.Patronymic}"/>
+                    <DataGridTextColumn  Width="*" Header="Возраст" Binding="{Binding User.Age, StringFormat={}{0:dd.MM.yyyy}}"/>
+                    <DataGridTextColumn  Width="*" Header="Желаемая работа" Binding="{Binding User.DesiredJob}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </StackPanel>
@@ -44,12 +44,20 @@
         <StackPanel x:Name="MorePanel"
                     Grid.Row="2"
                     HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
             <Button x:Name="MoreBtn"
                     Width="120"
                     Height="30"
                     Content="Подробнее"
                     Click="MoreBtn_Click"/>
+            <Button x:Name="AcceptBtn"
+                    Width="120"
+                    Height="30"
+                    Margin="10 0 0 0"
+                    Content="Принять на работу"
+                    Click="AcceptBtn_Click"/>
+            
         </StackPanel>
     </Grid>
 </Page>

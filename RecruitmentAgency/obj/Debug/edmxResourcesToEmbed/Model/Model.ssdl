@@ -71,6 +71,7 @@
     <Property Name="WorkCode" Type="int" />
     <Property Name="UserID" Type="int" />
     <Property Name="TimeOfReceipt" Type="date" />
+    <Property Name="IsAccepted" Type="bit" />
   </EntityType>
   <Association Name="FK_User_EducationDocument">
     <End Role="EducationDocument" Type="Self.EducationDocument" Multiplicity="0..1" />

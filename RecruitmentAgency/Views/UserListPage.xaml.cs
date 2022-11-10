@@ -39,15 +39,37 @@ namespace RecruitmentAgency.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            UsersPanel.ItemsSource = AppData.db.User.ToList();
+            UsersPanel.ItemsSource = AppData.db.WorkUser.ToList();
         }
 
         private void MoreBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (UsersPanel.SelectedItem != null)
+            try
             {
-                NavigationService.Navigate(new MoreUserInfoPage(UsersPanel.SelectedItem as User));
+                if (UsersPanel.SelectedItem != null)
+                {
+                    NavigationService.Navigate(new MoreUserInfoPage(UsersPanel.SelectedItem as WorkUser));
+                }
+                else
+                {
+                    throw new Exception("Выберите элемент для редактирования");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void AcceptBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var CurrentUser = UsersPanel.SelectedItem as WorkUser;
+
+            CurrentUser.IsAccepted = true;
+            AppData.db.SaveChanges();
+            MessageBox.Show("пользователь принят на работу");
+            UsersPanel.ItemsSource = AppData.db.WorkUser.Where(x => x.IsAccepted != true).ToList();
+        }
+
     }
 }

@@ -81,6 +81,7 @@
     <Property Name="WorkCode" Type="Int32" />
     <Property Name="UserID" Type="Int32" />
     <Property Name="TimeOfReceipt" Type="DateTime" Precision="0" />
+    <Property Name="IsAccepted" Type="Boolean" />
     <NavigationProperty Name="User" Relationship="Self.FK_WorkUser_User" FromRole="WorkUser" ToRole="User" />
     <NavigationProperty Name="Work" Relationship="Self.FK_WorkUser_Work" FromRole="WorkUser" ToRole="Work" />
   </EntityType>

@@ -41,3 +41,7 @@ C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\MaterialDe
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MoreUserInfoPage.g.cs
 C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\MoreUserInfoPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\PersonalAreaPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\PersonalAreaPage.baml
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\RequestPage.g.cs
+C:\Users\Ferww1\Desktop\RecruitmentAgency\RecruitmentAgency\obj\Debug\Views\RequestPage.baml

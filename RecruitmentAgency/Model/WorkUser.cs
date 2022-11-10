@@ -18,6 +18,7 @@ namespace RecruitmentAgency.Model
         public Nullable<int> WorkCode { get; set; }
         public Nullable<int> UserID { get; set; }
         public Nullable<System.DateTime> TimeOfReceipt { get; set; }
+        public Nullable<bool> IsAccepted { get; set; }
     
         public virtual User User { get; set; }
         public virtual Work Work { get; set; }

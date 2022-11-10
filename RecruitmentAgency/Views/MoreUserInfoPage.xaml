@@ -33,7 +33,8 @@
                             Margin="0,0,0,20">
                     <TextBlock Text="Имя:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Name}"
+                    <TextBox 
+                            Text="{Binding cWorkUser.User.Name}"
                              Width="200"/>
                 </StackPanel>
 
@@ -41,47 +42,44 @@
                             Margin="0,0,0,20">
                     <TextBlock Text="Фамилия:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Surname}"
+                    <TextBox Text="{Binding cWorkUser.User.Surname}"
                              Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Отчество:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Patronymic}"
+                    <TextBox Text="{Binding cWorkUser.User.Patronymic}"
                              Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Возраст:"
                                Width="120"/>
-                    <DatePicker SelectedDate="{Binding user.Age}"
+                    <DatePicker SelectedDate="{Binding cWorkUser.User.Age}"
                                 Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Серия паспорта:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Passport.Seria}"
+                    <TextBox Text="{Binding cWorkUser.User.Passport.Seria}"
                              Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Номер паспорта:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Passport.Number}"
+                    <TextBox Text="{Binding cWorkUser.User.Passport.Number}"
                              Width="200"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal"
                             Margin="0,0,0,20">
                     <TextBlock Text="Место выдачи:"
                                Width="120"/>
-                    <TextBox Text="{Binding user.Passport.DepartmentCode}"
+                    <TextBox Text="{Binding cWorkUser.User.Passport.DepartmentCode}"
                              Width="200"/>
                 </StackPanel>
-
-
-
             </StackPanel>
 
 
@@ -91,59 +89,56 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-
-
-
-                    </Grid>
                     <Grid Grid.Column="1">
-                        <StackPanel Orientation="Vertical">
-
+                        <StackPanel Orientation="Vertical"
+                                    VerticalAlignment="Bottom"
+                                    Margin="0,6,0,0">
                             <StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Дата Выдачи:"
                                    Width="140"/>
-                                <DatePicker SelectedDate="{Binding user.Passport.DateOfIssue}"
+                                <DatePicker 
+                                    SelectedDate="{Binding cWorkUser.User.Passport.DateOfIssue}"
                                     Width="200"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Желаемая работа:"
                                            Width="140"/>
-                                <TextBox Text="{Binding user.DesiredJob}"
+                                <TextBox Text="{Binding cWorkUser.User.DesiredJob}"
                                          Width="200"/>
                             </StackPanel><StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Место учебы:"
                                    Width="140"/>
-                                <TextBox Text="{Binding user.EducationDocument.PlaceOfStudy}"
+                                <TextBox Text="{Binding cWorkUser.User.EducationDocument.PlaceOfStudy}"
                                          Width="200"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Дата выдачи диплома:"
                                            Width="140"/>
-                                <DatePicker SelectedDate="{Binding user.EducationDocument.DiplomaIssueDate}"
+                                <DatePicker SelectedDate="{Binding cWorkUser.User.EducationDocument.DiplomaIssueDate}"
                                     Width="200"/>
                             </StackPanel><StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Место учебы:"
                                    Width="140"/>
-                                
-                                <TextBox Text="{Binding user.EducationDocument.NameOfPlaceOfStudy}"
+
+                                <TextBox Text="{Binding cWorkUser.User.EducationDocument.NameOfPlaceOfStudy}"
                                          Width="200"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Специальность:"
                                            Width="140"/>
-                                <TextBox Text="{Binding user.EducationDocument.Speciality}"
+                                <TextBox Text="{Binding cWorkUser.User.EducationDocument.Speciality}"
                                          Width="200"/>
                             </StackPanel><StackPanel Orientation="Horizontal"
                                         Margin="0,0,0,20">
                                 <TextBlock Text="Квалификация:"
                                            Width="140"/>
-                                <TextBox Text="{Binding user.EducationDocument.Qualification}"
+                                <TextBox Text="{Binding cWorkUser.User.EducationDocument.Qualification}"
                                          Width="200"/>
                             </StackPanel>
                         </StackPanel>
@@ -153,15 +148,5 @@
             </StackPanel>
 
         </Grid>
-        <StackPanel Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Bottom">
-            <Button x:Name="SaveEditBtn"
-                    Width="120"
-                    Height="35"
-                    Margin="0 0 0 15"
-                    Content="Редактировать"
-                    Click="SaveEditBtn_Click"/>
-        </StackPanel>
     </Grid>
 </Page>

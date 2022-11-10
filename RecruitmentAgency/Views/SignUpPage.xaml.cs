@@ -48,12 +48,8 @@ namespace RecruitmentAgency.Views
                     }
                     else
                     {
-                    AppData.db.User.Add(user);
-                    
-                        if (user.RoleID != null)
-                        {
-                            user.RoleID = 2;
-                        }
+                        user.RoleID = 2;
+                        AppData.db.User.Add(user);
                         AppData.db.SaveChanges();
                         MessageBox.Show("Вы успешно зарегестрировались!");
                         NavigationService.GoBack();

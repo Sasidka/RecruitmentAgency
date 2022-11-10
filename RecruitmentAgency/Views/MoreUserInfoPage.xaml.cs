@@ -22,11 +22,11 @@ namespace RecruitmentAgency.Views
     /// </summary>
     public partial class MoreUserInfoPage : Page
     {
-        public static User user {get;set;}
-        public MoreUserInfoPage(User getUser)
+        public WorkUser cWorkUser { get; set; }
+        public MoreUserInfoPage(WorkUser sWorkUser)
         {
             InitializeComponent();
-            user = getUser;
+            cWorkUser = sWorkUser;
             this.DataContext = this;
         }
 
@@ -37,12 +37,13 @@ namespace RecruitmentAgency.Views
 
         private void SaveEditBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (user.ID == 0)
+            if (cWorkUser.ID == 0)
             {
+                AppData.db.WorkUser.Add(cWorkUser);
                 AppData.db.SaveChanges();
-                MessageBox.Show("Данные были успешно изменены!");
+                MessageBox.Show("Данные были успешно добавлены!");
             }
-            else if (user.ID != 0)
+            else if (cWorkUser.ID != 0)
             {
                 AppData.db.SaveChanges();
                 MessageBox.Show("Данные были успешно изменены!");

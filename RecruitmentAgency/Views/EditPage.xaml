@@ -9,7 +9,7 @@
       Loaded="Page_Loaded"
       d:DesignWidth="800"
       
-      Title="EditPage">
+      Title="Редактирование/добавление">
 
     <Grid>
         <Grid.RowDefinitions>

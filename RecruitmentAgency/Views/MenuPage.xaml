@@ -6,8 +6,9 @@
       xmlns:local="clr-namespace:RecruitmentAgency.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" 
+      Loaded="Page_Loaded"
       d:DesignWidth="800"
-      Title="MenuPage">
+      Title="Меню">
 
     <Grid>
 
@@ -24,7 +25,7 @@
                     Content="Выйти"
                     Click="BackBtn_Click"/>
         </StackPanel>
-        
+
         <StackPanel HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Grid.Row="1">

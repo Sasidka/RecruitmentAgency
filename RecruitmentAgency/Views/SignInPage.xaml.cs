@@ -22,7 +22,7 @@ namespace RecruitmentAgency.Views
     /// </summary>
     public partial class SignInPage : Page
     {
-        public static Work work { get; set; }
+        public static Work cwork { get; set; }
         public SignInPage()
         {
             InitializeComponent();
@@ -39,7 +39,15 @@ namespace RecruitmentAgency.Views
 
             if (dataUser != null)
             {
-                NavigationService.Navigate(new MenuPage(dataUser));
+                switch (dataUser.RoleID)
+                {
+                    case 2:
+                        NavigationService.Navigate(new MainViewPage(cwork, dataUser));
+                        break;
+                    case 1:
+                        NavigationService.Navigate(new MenuPage(dataUser, cwork));
+                        break;
+                }
             }
         }
     }
