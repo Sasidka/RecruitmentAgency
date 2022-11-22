@@ -1,6 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище KABaseModelContainer" CdmEntityContainer="KABaseEntities">
+    <EntitySetMapping Name="EducationDocument">
+      <EntityTypeMapping TypeName="KABaseModel.EducationDocument">
+        <MappingFragment StoreEntitySet="EducationDocument">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="NameOfPlaceOfStudy" ColumnName="NameOfPlaceOfStudy" />
+          <ScalarProperty Name="PlaceOfStudy" ColumnName="PlaceOfStudy" />
+          <ScalarProperty Name="DiplomaIssueDate" ColumnName="DiplomaIssueDate" />
+          <ScalarProperty Name="Speciality" ColumnName="Speciality" />
+          <ScalarProperty Name="Qualification" ColumnName="Qualification" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Passport">
+      <EntityTypeMapping TypeName="KABaseModel.Passport">
+        <MappingFragment StoreEntitySet="Passport">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Seria" ColumnName="Seria" />
+          <ScalarProperty Name="Number" ColumnName="Number" />
+          <ScalarProperty Name="DepartmentCode" ColumnName="DepartmentCode" />
+          <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="KABaseModel.Role">
         <MappingFragment StoreEntitySet="Role">
@@ -12,14 +35,17 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="KABaseModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="Login" ColumnName="Login" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Surname" ColumnName="Surname" />
           <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
           <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="EducationDocumentsID" ColumnName="EducationDocumentsID" />
+          <ScalarProperty Name="DesiredJob" ColumnName="DesiredJob" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -29,9 +55,18 @@
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="image" ColumnName="image" />
-          <ScalarProperty Name="WorkExperience" ColumnName="WorkExperience" />
+          <ScalarProperty Name="WorkExperienceID" ColumnName="WorkExperienceID" />
           <ScalarProperty Name="Profession" ColumnName="Profession" />
           <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkExperience">
+      <EntityTypeMapping TypeName="KABaseModel.WorkExperience">
+        <MappingFragment StoreEntitySet="WorkExperience">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -41,17 +76,8 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="WorkCode" ColumnName="WorkCode" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="sysdiagrams">
-      <EntityTypeMapping TypeName="KABaseModel.sysdiagrams">
-        <MappingFragment StoreEntitySet="sysdiagrams">
-          <ScalarProperty Name="definition" ColumnName="definition" />
-          <ScalarProperty Name="version" ColumnName="version" />
-          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="TimeOfReceipt" ColumnName="TimeOfReceipt" />
+          <ScalarProperty Name="IsAccepted" ColumnName="IsAccepted" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

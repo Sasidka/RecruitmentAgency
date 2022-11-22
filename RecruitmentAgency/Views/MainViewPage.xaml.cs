@@ -22,10 +22,12 @@ namespace RecruitmentAgency.Views
     /// </summary>
     public partial class MainViewPage : Page
     {
-        public static User user { get; set; }
-        public MainViewPage(User getUser)
+        public static Work work { get; set; }
+        public User user { get; set; }
+        public MainViewPage(Work getWork, User getUser)
         {
             InitializeComponent();
+            work = getWork;
             user = getUser;
             this.DataContext = this;
         }
@@ -37,12 +39,18 @@ namespace RecruitmentAgency.Views
 
         private void filtrCmb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            var currentFiltr = filtrCmb.SelectedItem as Work;
+            if (currentFiltr != null)
+            {
+                listView.ItemsSource = AppData.db.Work.Where(item => item.Title == currentFiltr.Title).ToList();
+            }
         }
 
         private void addBtn_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new EditPage(new Work()));
+
+            listView.ItemsSource = AppData.db.Work.ToList();
         }
 
         private void editBtn_Click(object sender, RoutedEventArgs e)
@@ -51,7 +59,7 @@ namespace RecruitmentAgency.Views
             {
                 if (listView.SelectedItems != null)
                 {
-                    NavigationService.Navigate(new EditPage(listView.SelectedItems as Work));
+                    NavigationService.Navigate(new EditPage(listView.SelectedItem as Work));
                 }
                 else
                 {
@@ -63,31 +71,80 @@ namespace RecruitmentAgency.Views
 
                 MessageBox.Show(ex.Message, ex.Source + " ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            listView.ItemsSource = AppData.db.Work.ToList();
         }
 
         private void deleteBtn_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                 
+                Work deleteCheck = (Work)listView.SelectedItem;
 
-        }
+                if (deleteCheck == null)
+                {
+                    MessageBox.Show("Вы не выбрали товар", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Error);
 
-        private void PersonalAreaBtn_Click(object sender, RoutedEventArgs e)
-        {
 
+                }
+                else if (MessageBox.Show("Вы действительно хотите удалить выбранный элемент? Данные будут удалены навсегда", "Вы уверены?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    if (deleteCheck != null)
+                    {
+                        AppData.db.Work.Remove(deleteCheck);
+                        AppData.db.SaveChanges();
+                        Page_Loaded(null, null);
+                    }
+                    else
+                    {
+                        throw new Exception("Для удаления выберите элемент из списка");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, ex.Source, MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+          
         }
 
         private void clear_cmb_Click(object sender, RoutedEventArgs e)
         {
-
+            listView.ItemsSource = AppData.db.Work.ToList();
+            filtrCmb.ItemsSource = null;
+            filtrCmb.ItemsSource = AppData.db.Work.ToList();
         }
 
         private void searchTxb_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            listView.ItemsSource = AppData.db.Work.Where(item => item.Title.Contains(searchTxb.Text) || item.Profession.Contains(searchTxb.Text)
+            || item.Salary.Contains(searchTxb.Text) || item.WorkExperience.Title.Contains(searchTxb.Text)).ToList();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             listView.ItemsSource = AppData.db.Work.ToList();
+            filtrCmb.ItemsSource = AppData.db.Work.ToList();
+            if (user.RoleID == 2)
+            {
+                AdminPanel.Visibility = Visibility.Collapsed;
+            }
+            else if (user.RoleID == 1) 
+            {
+                SubUrApplicationBtn.Visibility = Visibility.Collapsed;
+            }
         }
+
+        private void SubUrApplicationBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (listView.SelectedItem != null)
+            {
+                //NavigationService.Navigate(new MoreUserInfoPage(listView.SelectedItem as Work));
+            }
+        }
+    
     }
 }
